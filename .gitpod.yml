@@ -1,6 +1,11 @@
-# Configuration de Gitpod
 
-# Commandes à exécuter lors du démarrage de l'environnement
+image: maven:latest
+
 tasks:
-  - init: echo "Initialisation de l'environnement..."
-    command: mvn install && mvn test
+  - name: Install dependencies
+    command: mvn install
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
+    - redhat.java
