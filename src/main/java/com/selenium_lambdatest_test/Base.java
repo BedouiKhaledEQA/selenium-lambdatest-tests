@@ -1,16 +1,20 @@
 package com.selenium_lambdatest_test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.bouncycastle.oer.its.etsi102941.Url;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -37,14 +41,14 @@ public class Base {
             }
 
         }
-        public WebDriver luncher(){
+        public WebDriver luncher() throws MalformedURLException {
             String Browser=System.getProperty("Browser","Chrome");
             switch (Browser){
                 case "Chrome" -> {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--headless");
-                    driver = new ChromeDriver(options);
+                    RemoteWebDriver driver = (new RemoteWebDriver(new URL("http://192.168.2.23:4444"),options) );
 
                 }case "Firefox"->{
                     driver=new FirefoxDriver();
