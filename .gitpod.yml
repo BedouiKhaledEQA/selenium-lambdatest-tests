@@ -1,11 +1,14 @@
+image: maven:3.8.1
 
-image: maven:latest
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
 
 tasks:
   - name: Install dependencies
     command: mvn install
 
-vscode:
-  extensions:
-    - vscjava.vscode-java-pack
-    - redhat.java
+  - name: Run tests
+    command: mvn test
+
+  - name: Run TestRunner
+    command: mvn exec:java -Dexec.mainClass="runner.TestRunner"
