@@ -43,7 +43,7 @@ public class Base {
                 case "Chrome" -> {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--start-maximized");
+                    options.addArguments("--headless");
                     driver = new ChromeDriver(options);
 
                 }case "Firefox"->{
