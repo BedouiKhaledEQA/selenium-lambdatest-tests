@@ -6,6 +6,12 @@ ports:
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - name: Get Core & Configure
+
+    env:
+      LT_USERNAME: 'bedouikhaled090'
+      LT_ACCESS_KEY: 'lKzyhNIDbAaApRpo8AkGWaUWrFe8xbf0pJVQm3iNJyfOL0VrPI'
+
+
     before: |
       wget https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute
       chmod u+x hyperexecute
