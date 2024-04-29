@@ -1,14 +1,6 @@
-image: maven:3.8.1
+# Configuration de Gitpod
 
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
-
+# Commandes à exécuter lors du démarrage de l'environnement
 tasks:
-  - name: Install dependencies
-    command: mvn install
-
-  - name: Run tests
-    command: mvn test
-
-  - name: Run TestRunner
-    command: mvn exec:java -Dexec.mainClass="runner.TestRunner"
+  - init: echo "Initialisation de l'environnement..."
+    command: mvn install && mvn test
